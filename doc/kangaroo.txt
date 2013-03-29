@@ -7,6 +7,21 @@ This plugin is only available if 'compatible' is not set.
 
 INTRODUCTION                                    *kangaroo*
 
-Help to come...
+Kangaroo provides a jump stack onto which positions can be manually
+pushed and popped. A push onto the jump stack remembers the current
+cursor position, and a pop jumps back to the most recently saved
+position.
+
+MAPPINGS                                        *kangaroo-mappings*
+
+zp                      Push current cursor position onto the jump
+                        stack.
+
+zP                      Pop most recent cursor position off the stack
+                        and return to it.
+
+TODO                                            *kangaroo-todo*
+
+1. Keep separate stacks for each window.
 
  vim:tw=78:ts=8:ft=help:norl:
