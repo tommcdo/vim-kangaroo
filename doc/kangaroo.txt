@@ -14,9 +14,11 @@ position.
 
 MAPPINGS                                        *kangaroo-mappings*
 
+                                                *zp*
 zp                      Push current cursor position onto the jump
                         stack.
 
+                                                *zP*
 zP                      Pop most recent cursor position off the stack
                         and return to it.
 
