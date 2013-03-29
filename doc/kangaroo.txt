@@ -1,0 +1,12 @@
+*kangaroo.txt*  Plugin to manually maintain a jump stack
+
+Author: Tom McDonald <http://github.com/tommcdo>
+License: Same terms as Vim itself (see |license|)
+
+This plugin is only available if 'compatible' is not set.
+
+INTRODUCTION                                    *kangaroo*
+
+Help to come...
+
+ vim:tw=78:ts=8:ft=help:norl:
