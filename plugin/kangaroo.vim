@@ -1,31 +1,21 @@
-let s:positions = {}
-
 function! s:push()
-	let tab = tabpagenr()
-	let win = winnr()
-	if !has_key(s:positions, tab)
-		let s:positions[tab] = {}
+	if !exists('w:positions')
+		let w:positions = []
 	endif
-	if !has_key(s:positions[tab], win)
-		let s:positions[tab][win] = []
-	endif
-	call add(s:positions[tab][win], [bufnr("%"), getpos(".")])
-	echo bufnr("%")
+	call add(w:positions, [bufnr("%"), getpos(".")])
 endfunction
 
 function! s:pop()
-	let tab = tabpagenr()
-	let win = winnr()
-	if !has_key(s:positions, tab) || !has_key(s:positions[tab], win) || len(s:positions[tab][win]) == 0
+	if !exists('w:positions') || len(w:positions) == 0
 		echohl ErrorMsg | echo "jump stack empty" | echohl None
 		return
 	endif
-	let idx = len(s:positions[tab][win]) - 1
-	let [bufnr, pos] = s:positions[tab][win][idx]
+	let idx = len(w:positions) - 1
+	let [bufnr, pos] = w:positions[idx]
 	if idx == 0
-		let s:positions[tab][win] = []
+		let w:positions = []
 	else
-		let s:positions[tab][win] = s:positions[tab][win][0:(idx - 1)]
+		let w:positions = w:positions[0:(idx - 1)]
 	endif
 	if bufnr != bufnr("%")
 		execute "edit #" . bufnr
