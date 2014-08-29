@@ -23,8 +23,11 @@ function! s:pop()
 	call setpos(".", pos)
 endfunction
 
-noremap <silent> <Plug>KangarooPush :call <SID>push()<CR>
-noremap <silent> <Plug>KangarooPop :call <SID>pop()<CR>
+command! KangarooPush call s:push()
+command! KangarooPop call s:pop()
+
+noremap <silent> <Plug>KangarooPush :<C-U>KangarooPush<CR>
+noremap <silent> <Plug>KangarooPop :<C-I>KangarooPop<CR>
 
 if !exists("g:kangaroo_no_mappings") || !g:kangaroo_no_mappings
 	nmap <silent> zp <Plug>KangarooPush
