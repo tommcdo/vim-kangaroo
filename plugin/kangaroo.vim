@@ -27,7 +27,7 @@ command! KangarooPush call s:push()
 command! KangarooPop call s:pop()
 
 noremap <silent> <Plug>KangarooPush :<C-U>KangarooPush<CR>
-noremap <silent> <Plug>KangarooPop :<C-I>KangarooPop<CR>
+noremap <silent> <Plug>KangarooPop :<C-U>KangarooPop<CR>
 
 if !exists("g:kangaroo_no_mappings") || !g:kangaroo_no_mappings
 	nmap <silent> zp <Plug>KangarooPush
