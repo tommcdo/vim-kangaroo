@@ -10,13 +10,7 @@ function! s:pop()
 		echohl ErrorMsg | echo "jump stack empty" | echohl None
 		return
 	endif
-	let idx = len(w:positions) - 1
-	let [bufnr, pos] = w:positions[idx]
-	if idx == 0
-		let w:positions = []
-	else
-		let w:positions = w:positions[0:(idx - 1)]
-	endif
+	let [bufnr, pos] = remove(w:positions, -1)
 	if bufnr != bufnr("%")
 		execute "edit #" . bufnr
 	endif
