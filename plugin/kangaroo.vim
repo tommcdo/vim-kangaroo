@@ -2,7 +2,10 @@ function! s:push()
 	if !exists('w:positions')
 		let w:positions = []
 	endif
-	call add(w:positions, [bufnr("%"), getpos(".")])
+	let pos = [bufnr("%"), getpos(".")]
+	if len(w:positions) == 0 || w:positions[-1] != pos
+		call add(w:positions, pos)
+	endif
 endfunction
 
 function! s:pop()
