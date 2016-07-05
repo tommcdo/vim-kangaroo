@@ -2,7 +2,7 @@ function! s:push()
 	if !exists('w:positions')
 		let w:positions = []
 	endif
-	let pos = [bufnr("%"), getpos(".")]
+	let pos = [bufnr("%"), winsaveview()]
 	if len(w:positions) == 0 || w:positions[-1] != pos
 		call add(w:positions, pos)
 	endif
@@ -17,7 +17,7 @@ function! s:pop()
 	if bufnr != bufnr("%")
 		execute "edit #" . bufnr
 	endif
-	call setpos(".", pos)
+	call winrestview(pos)
 endfunction
 
 command! KangarooPush call s:push()
