@@ -20,6 +20,13 @@ function! s:pop()
 	call winrestview(pos)
 endfunction
 
+function! kangaroo#altitude()
+	if !exists('w:positions')
+		return 0
+	endif
+	return len(w:positions)
+endfunction
+
 command! KangarooPush call s:push()
 command! KangarooPop call s:pop()
 
